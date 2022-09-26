@@ -1,0 +1,23 @@
+{
+  "name": "@strapi-community/plugin-shopify-fields",
+  "version": "4.4.0",
+  "description": "Use your Shopify data within Strapi",
+  "author": {
+    "name": "@WalkingPizza",
+    "url": "https://github.com/WalkingPizza"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strapi-community/strapi-plugin-shopify-fields"
+  },
+  "strapi": {
+    "name": "shopify-fields",
+    "description": "Use your Shopify data within Strapi",
+    "kind": "plugin",
+    "displayName": "Shopify Fields"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "shopify-api-node": "3.11.1"
+  }
+}
