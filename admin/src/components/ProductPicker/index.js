@@ -57,7 +57,11 @@ const ProductPicker = ({
               {products.map((product) => (
                 <GridItem key={product.id} col={3}>
                   <ProductCard
-                    selected={!!selectedValues.find((p) => p.id === product.id)}
+                    selected={
+                      multiple
+                        ? !!selectedValues?.find((p) => p.id === product.id)
+                        : selectedValues?.id === product.id
+                    }
                     onChange={() => onSelect(product)}
                     title={product.title}
                     image={product.image?.src}
@@ -97,7 +101,7 @@ const ProductPicker = ({
                 defaultMessage="Refresh products"
               />
             </Button>
-            <Button>
+            <Button onClick={onFinish}>
               <FormattedMessage
                 id={getTrad('onents.ProductPicker.finish')}
                 defaultMessage="Finish"
