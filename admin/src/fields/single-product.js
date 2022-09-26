@@ -9,8 +9,9 @@ export default {
   pluginId,
   type: 'json',
   icon: ShopifyIcon,
+  multiple: true,
   components: {
-    Input: async () => import('../components/Input/SingleProductInput'),
+    Input: async () => import('../components/Input/Single'),
   },
   intlLabel: {
     id: getTrad('custom-fields.single-product.label'),

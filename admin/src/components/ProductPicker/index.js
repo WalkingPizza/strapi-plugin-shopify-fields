@@ -14,22 +14,24 @@ import { Stack } from '@strapi/design-system/Stack';
 import { Loader } from '@strapi/design-system/Loader';
 import { Button } from '@strapi/design-system/Button';
 import ProductCard from '../ProductCard';
+import { useShopifyFields } from '../../contexts/ShopifyFields';
 
-const ProductPicker = ({
-  onClose,
-  onSelect,
-  onRefresh,
-  onFetchMore,
-  hasMore,
-  selectedValues,
-  products,
-  multiple,
-  updatedAt,
-  isLoading,
-  onFinish,
-}) => {
+const ProductPicker = ({ multiple }) => {
+  const {
+    togglePicker,
+    products,
+    handleChange,
+    fetchNextPage,
+    dataUpdatedAt,
+    refetch,
+    formattedValue,
+    hasNextPage,
+    isSelected,
+    loading,
+  } = useShopifyFields();
+
   return (
-    <ModalLayout onClose={onClose} labelledBy="title">
+    <ModalLayout onClose={togglePicker} labelledBy="title">
       <ModalHeader>
         <Typography variant="omega" fontWeight="bold" id="title">
           <FormattedMessage
@@ -43,7 +45,7 @@ const ProductPicker = ({
         </Typography>
       </ModalHeader>
       <ModalBody style={{ minHeight: '60vh' }}>
-        {isLoading ? (
+        {loading ? (
           <Stack
             alignItems="center"
             justifyContent="center"
@@ -57,12 +59,8 @@ const ProductPicker = ({
               {products.map((product) => (
                 <GridItem key={product.id} col={3}>
                   <ProductCard
-                    selected={
-                      multiple
-                        ? !!selectedValues?.find((p) => p.id === product.id)
-                        : selectedValues?.id === product.id
-                    }
-                    onChange={() => onSelect(product)}
+                    selected={isSelected(product)}
+                    onChange={() => handleChange(product)}
                     title={product.title}
                     image={product.image?.src}
                     productId={product.id}
@@ -70,9 +68,9 @@ const ProductPicker = ({
                 </GridItem>
               ))}
             </Grid>
-            {hasMore && (
+            {hasNextPage && (
               <Stack marginTop={6} horizontal justifyContent="center">
-                <Button variant="tertiary" onClick={onFetchMore}>
+                <Button variant="tertiary" onClick={fetchNextPage}>
                   <FormattedMessage
                     id={getTrad('onents.ProductPicker.load-more')}
                     defaultMessage="Load more"
@@ -89,19 +87,19 @@ const ProductPicker = ({
             <FormattedMessage
               id={getTrad('onents.ProductPicker.last-updated')}
               defaultMessage="Last updated at {updatedAt, time, short} on {updatedAt, date, long}"
-              values={{ updatedAt: new Date(updatedAt) }}
+              values={{ updatedAt: new Date(dataUpdatedAt) }}
             />
           </Typography>
         }
         endActions={
           <Stack horizontal spacing={2}>
-            <Button variant="secondary" onClick={onRefresh} disabled={isLoading || !onRefresh}>
+            <Button variant="secondary" onClick={refetch} disabled={loading}>
               <FormattedMessage
                 id={getTrad('onents.ProductPicker.refresh')}
                 defaultMessage="Refresh products"
               />
             </Button>
-            <Button onClick={onFinish}>
+            <Button onClick={togglePicker}>
               <FormattedMessage
                 id={getTrad('onents.ProductPicker.finish')}
                 defaultMessage="Finish"
@@ -115,23 +113,7 @@ const ProductPicker = ({
 };
 
 ProductPicker.propTypes = {
-  updatedAt: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  onRefresh: PropTypes.func.isRequired,
-  selectedValues: PropTypes.array.isRequired,
-  onFetchMore: PropTypes.func,
-  hasMore: PropTypes.bool.isRequired,
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      image: PropTypes.string,
-    })
-  ),
-  multiple: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  onFinish: PropTypes.func.isRequired,
+  multiple: PropTypes.bool,
 };
 
 export default ProductPicker;
