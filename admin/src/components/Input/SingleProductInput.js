@@ -70,7 +70,6 @@ const SingleProductInput = ({ name, attribute, onChange, value }) => {
     initialData: { pages: [] },
   });
 
-  const formattedValue = value ? JSON.parse(value) : undefined;
   const products = data.pages.map((page) => page.data).flat();
   const loading = isLoading || isRefetching;
 
@@ -78,7 +77,8 @@ const SingleProductInput = ({ name, attribute, onChange, value }) => {
     onChange({
       target: {
         name,
-        value: JSON.stringify(formattedValue?.id === product.id ? undefined : product),
+        value: value?.id === product.id ? null : product,
+        type: 'json',
       },
     });
 
@@ -129,7 +129,7 @@ const SingleProductInput = ({ name, attribute, onChange, value }) => {
                 <GridItem key={product.id} col={3}>
                   <ProductCard
                     onChange={() => handleChange(product)}
-                    selected={formattedValue?.id === product.id}
+                    selected={value?.id === product.id}
                     title={product.title}
                     image={product.image?.src}
                     productId={product.id}
@@ -159,7 +159,7 @@ const SingleProductInput = ({ name, attribute, onChange, value }) => {
           hasMore={hasNextPage}
           onRefresh={refetch}
           multiple={false}
-          selectedValues={formattedValue}
+          selectedValues={value}
           isLoading={loading}
           updatedAt={dataUpdatedAt}
           onFinish={() => setPickerOpen(false)}
