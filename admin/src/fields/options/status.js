@@ -5,7 +5,7 @@ export default {
     id: getTrad('custom-fields.options.status.label'),
     defaultMessage: 'Published status',
   },
-  hint: {
+  description: {
     id: getTrad('custom-fields.options.status.description'),
     defaultMessage: 'The status of the products to retrieve',
   },
