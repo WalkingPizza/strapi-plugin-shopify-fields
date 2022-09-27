@@ -102,7 +102,7 @@ const Input = ({ name, multiple, attribute, onChange, value, error }) => {
     if (multiple)
       value = JSON.stringify(
         !formattedValue || !formattedValue.find((p) => p.id === product.id)
-          ? [...(formattedValue || []), product]
+          ? [...(formattedValue || []), _.pick(product, attribute.options.fields, 'id')]
           : formattedValue.filter((p) => p.id !== product.id),
         null,
         2
@@ -110,13 +110,13 @@ const Input = ({ name, multiple, attribute, onChange, value, error }) => {
     else
       value =
         !formattedValue || formattedValue.id !== product.id
-          ? JSON.stringify(product, null, 2)
+          ? JSON.stringify(_.pick(product, attribute.options.fields, 'id'), null, 2)
           : null;
 
     onChange({
       target: {
         name,
-        value,
+        value: value === '[]' ? null : value,
         type: 'json',
       },
     });

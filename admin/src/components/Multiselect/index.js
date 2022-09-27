@@ -4,8 +4,9 @@ import { Select, Option } from '@strapi/design-system/Select';
 import { Box } from '@strapi/design-system/Box';
 import { useIntl } from 'react-intl';
 import getTrad from '../../utils/getTrad';
+import _ from 'lodash';
 
-const Multiselect = ({ intlLabel, name, options, error, hint, onChange, value }) => {
+const Multiselect = ({ intlLabel, name, options, error, description, onChange, value }) => {
   const { formatMessage } = useIntl();
 
   if (!Array.isArray(value)) value = [];
@@ -15,7 +16,7 @@ const Multiselect = ({ intlLabel, name, options, error, hint, onChange, value })
       id: getTrad('custom-fields.content-type-builder.multiselect.placeholder'),
       defaultMessage: '{number, plural, =0 {# fields} one {# field} other {# fields}} selected',
     },
-    { number: value.length }
+    { number: value.filter((val) => val !== 'id').length }
   );
 
   return (
@@ -27,12 +28,12 @@ const Multiselect = ({ intlLabel, name, options, error, hint, onChange, value })
         name={name}
         onChange={(values) => {
           onChange({
-            target: { name, value: values },
+            target: { name, value: [...values, 'id'] },
           });
         }}
-        value={value}
+        value={value.filter((val) => val !== 'id')}
         error={error}
-        hint={formatMessage(hint)}
+        hint={formatMessage(description)}
       >
         {options.map((option) => (
           <Option key={option.key} value={option.value}>
