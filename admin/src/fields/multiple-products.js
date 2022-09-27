@@ -22,9 +22,8 @@ export default {
   },
   multiple: true,
   options: {
-    base: [options.apiVersion],
+    base: [options.fields],
     advanced: [
-      options.fields,
       options.collectionId,
       options.createdAtMax,
       options.createdAtMin,
@@ -40,18 +39,7 @@ export default {
       options.presentmentCurrencies,
     ],
     validator: () => ({
-      apiVersion: yup.string().default('2022-07').required(),
-      fields: yup
-        .array()
-        .of(yup.string())
-        .required({
-          id: 'custom-fields.multiple-products.options.validator.fields',
-          defaultMessage: 'You must select at least 1 field',
-        })
-        .min(1, {
-          id: 'custom-fields.multiple-products.options.validator.fields',
-          defaultMessage: 'You must select at least 1 field',
-        }),
+      fields: yup.array().of(yup.string()).default([]),
     }),
   },
 };
