@@ -1,6 +1,6 @@
 {
   "name": "strapi-plugin-shopify-fields",
-  "version": "4.4.0",
+  "version": "v4.0.0-beta1",
   "description": "Use your Shopify data within Strapi",
   "author": {
     "name": "@WalkingPizza",
