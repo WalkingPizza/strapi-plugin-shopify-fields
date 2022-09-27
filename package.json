@@ -1,5 +1,5 @@
 {
-  "name": "@strapi-community/plugin-shopify-fields",
+  "name": "strapi-plugin-shopify-fields",
   "version": "4.4.0",
   "description": "Use your Shopify data within Strapi",
   "author": {
@@ -19,5 +19,29 @@
   "license": "MIT",
   "dependencies": {
     "shopify-api-node": "3.11.1"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^4.4.0",
+    "lodash": "^4.17.21",
+    "yup": "^0.32.9"
+  },
+  "engines": {
+    "node": ">=12.x.x <=18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix"
+  },
+  "keywords": [
+    "strapi",
+    "strapi plugin",
+    "shopify",
+    "custom fields",
+    "ecommerce"
+  ],
+  "devDependencies": {
+    "@strapi-community/eslint-config": "0.4.3",
+    "eslint": "8.24.0"
   }
 }
