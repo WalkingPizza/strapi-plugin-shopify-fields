@@ -4,7 +4,6 @@ export const PRODUCT_FIELDS = [
   'body_html',
   'created_at',
   'handle',
-  'id',
   'images',
   'image',
   'options',
@@ -26,7 +25,7 @@ export const fieldToSelectOption = (field) => ({
   disabled: ['id', 'images', 'title'].includes(field),
   metadatas: {
     intlLabel: {
-      id: getTrad(`custom-fields.single-product.options.advanced.fields.${field}`),
+      id: getTrad(`custom-fields.options.fields.${field}`),
       defaultMessage: field,
     },
   },

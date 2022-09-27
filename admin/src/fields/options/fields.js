@@ -3,16 +3,12 @@ import getTrad from '../../utils/getTrad';
 
 export default {
   intlLabel: {
-    id: getTrad('custom-fields.multiple-products.options.advanced.fields.label'),
+    id: getTrad('custom-fields.options.fields.label'),
     defaultMessage: 'Fields',
   },
   description: {
-    id: getTrad('custom-fields.multiple-products.options.advanced.fields.description'),
-    defaultMessage: 'Select the fields to display',
-  },
-  hint: {
-    id: getTrad('custom-fields.content-type-builder.multiselect.hint'),
-    defaultMessage: "Select the fields to retrieve from Shopify's APIs",
+    id: getTrad('custom-fields.options.fields.description'),
+    defaultMessage: 'Select the fields to display (ID is automatically included)',
   },
   name: 'options.fields',
   type: 'multiselect',

@@ -2,11 +2,11 @@ import getTrad from '../../utils/getTrad';
 
 export default {
   intlLabel: {
-    id: getTrad('custom-fields.multiple-products.options.advanced.status.label'),
+    id: getTrad('custom-fields.options.status.label'),
     defaultMessage: 'Published status',
   },
   hint: {
-    id: getTrad('custom-fields.multiple-products.options.advanced.status.description'),
+    id: getTrad('custom-fields.options.status.description'),
     defaultMessage: 'The status of the products to retrieve',
   },
   name: 'options.status',

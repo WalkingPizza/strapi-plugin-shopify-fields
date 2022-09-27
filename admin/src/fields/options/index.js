@@ -1,6 +1,5 @@
 import collectionId from './collection-id';
 import fields from './fields';
-import apiVersion from './api-version';
 import publishedAtMin from './published-at-min';
 import publishedAtMax from './published-at-max';
 import publishedStatus from './published-status';
@@ -17,7 +16,6 @@ import productType from './product-type';
 export default {
   collectionId,
   fields,
-  apiVersion,
   publishedAtMin,
   publishedAtMax,
   publishedStatus,
