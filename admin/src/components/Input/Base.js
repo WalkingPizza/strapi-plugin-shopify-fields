@@ -103,10 +103,15 @@ const Input = ({ name, multiple, attribute, onChange, value, error }) => {
       value = JSON.stringify(
         !formattedValue || !formattedValue.find((p) => p.id === product.id)
           ? [...(formattedValue || []), product]
-          : formattedValue.filter((p) => p.id !== product.id)
+          : formattedValue.filter((p) => p.id !== product.id),
+        null,
+        2
       );
     else
-      value = JSON.stringify(!formattedValue || formattedValue.id !== product.id ? product : null);
+      value =
+        !formattedValue || formattedValue.id !== product.id
+          ? JSON.stringify(product, null, 2)
+          : null;
 
     onChange({
       target: {
