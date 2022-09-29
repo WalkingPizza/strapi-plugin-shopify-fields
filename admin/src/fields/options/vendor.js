@@ -3,7 +3,7 @@ import getTrad from '../../utils/getTrad';
 export default {
   intlLabel: {
     id: getTrad('custom-fields.options.vendor.label'),
-    defaultMessage: 'Collection ID',
+    defaultMessage: 'Vendor',
   },
   description: {
     id: getTrad('custom-fields.options.vendor.description'),
