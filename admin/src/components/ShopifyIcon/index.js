@@ -1,24 +1,15 @@
-import React from "react";
-import { Flex } from "@strapi/design-system/Flex";
-import styled, { useTheme } from "styled-components";
+import React from 'react';
+import { Flex } from '@strapi/design-system/Flex';
+import styled, { useTheme } from 'styled-components';
 
 const IconBox = styled(Flex)`
-  background-color: ${({ theme }) => theme.colors.primary100};
-  border: 1px solid ${({ theme }) => theme.colors.primary200};
+  background-color: #f0f0ff;
+  border: 1px solid #d9d8ff;
 `;
 
 const ShopifyIcon = () => {
-  const theme = useTheme();
-
   return (
-    <IconBox
-      justifyContent="center"
-      alignItems="center"
-      width={7}
-      height={6}
-      hasRadius
-      aria-hidden
-    >
+    <IconBox justifyContent="center" alignItems="center" width={7} height={6} hasRadius aria-hidden>
       <svg
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,7 +20,7 @@ const ShopifyIcon = () => {
         height="1rem"
         viewBox="0 0 109.5 124.5"
         xmlSpace="preserve"
-        fill={theme.colors.primary600}
+        fill="#4945ff"
       >
         <path
           d="M74.7,14.8c0,0-1.4,0.4-3.7,1.1c-0.4-1.3-1-2.8-1.8-4.4c-2.6-5-6.5-7.7-11.1-7.7c0,0,0,0,0,0
