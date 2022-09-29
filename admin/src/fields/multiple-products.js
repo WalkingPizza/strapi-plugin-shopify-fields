@@ -22,21 +22,43 @@ export default {
   },
   multiple: true,
   options: {
-    base: [options.fields],
     advanced: [
-      options.collectionId,
-      options.createdAtMax,
-      options.createdAtMin,
-      options.publishedAtMax,
-      options.publishedAtMin,
-      options.publishedStatus,
-      options.updatedAtMax,
-      options.updatedAtMin,
-      options.vendor,
-      options.status,
-      options.productType,
-      options.sinceId,
-      options.presentmentCurrencies,
+      {
+        sectionTitle: {
+          id: getTrad('custom-fields.multiple-products.response-settings'),
+          defaultMessage: 'Response settings',
+        },
+        items: [options.fields, options.presentmentCurrencies],
+      },
+      {
+        sectionTitle: {
+          id: getTrad('custom-fields.multiple-products.filter-by-product-details'),
+          defaultMessage: 'Filter by product details',
+        },
+        items: [
+          options.collectionId,
+          options.publishedStatus,
+          options.vendor,
+          options.status,
+          options.productType,
+          options.sinceId,
+          options.presentmentCurrencies,
+        ],
+      },
+      {
+        sectionTitle: {
+          id: getTrad('custom-fields.multiple-products.filter-by-dates'),
+          defaultMessage: 'Filter by dates',
+        },
+        items: [
+          options.createdAtMax,
+          options.createdAtMin,
+          options.publishedAtMax,
+          options.publishedAtMin,
+          options.updatedAtMax,
+          options.updatedAtMin,
+        ],
+      },
     ],
     validator: () => ({
       fields: yup.array().of(yup.string()).default([]),
