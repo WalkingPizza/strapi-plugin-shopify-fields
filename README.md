@@ -62,6 +62,37 @@ module.exports = {
 };
 ```
 
+### Configuring the security middleware
+
+Open the file `config/middlewares.js` and check the configuration of the `strapi::security` middleware.
+
+If your file looks like this:
+
+```js
+module.exports = [
+  'strapi::errors',
+  'strapi::security',
+  'strapi::cors',
+  'strapi::poweredBy',
+```
+
+Replace `'strapi::security'` with:
+
+```js
+{
+  name: 'strapi::security',
+  config: {
+    contentSecurityPolicy: {
+      directives: {
+        'img-src': ["'self'", 'data:', 'blob:', 'https://dl.airtable.com', 'https://cdn.shopify.com'],
+      },
+    },
+  },
+}
+```
+
+If, instead, your file already presents `strapi::security` as an object, simply add `https://cdn.shopify.com` to the `img-src` array.
+
 ## 🚀 Roadmap
 
 - [ ] Automatic sync between your Shopify catalog and Strapi fields
