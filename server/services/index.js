@@ -1,3 +1,4 @@
 const shopify = require('./shopify');
+const admin = require('./admin');
 
-module.exports = { shopify };
+module.exports = { shopify, admin };

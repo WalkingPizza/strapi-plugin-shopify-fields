@@ -14,4 +14,6 @@ module.exports = async ({ strapi }) => {
     name: 'multiple-products',
     type: 'json',
   });
+
+  strapi.plugin(pluginId).service('admin').amendSecurityMiddleware();
 };
